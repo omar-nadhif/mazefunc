@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>maze</title>
+<style>
+body{
+  text-align: center;
+  font-size: 3em;
+}
+input{
+  height: 30px;
+}
+</style>
+</head>
+<body>
+
+  <pre id="container"></pre>
+
+  <script>
+    let container = document.getElementById("container");
+    let dataMaze = [];
+    let rev = 0;
+ 
+
+    function maze(z) {
+     
+    for(let x = 0;x < z;x++){
+        for(let u = 0;u < z;u++){
+          if(x % 2 == 0){
+            if(rev % 2 === 1){ if(u < z-1 && u > z-3){dataMaze += " ";} else dataMaze += "@";}
+            else if(u > 0 && u < 2) dataMaze += " ";
+            else dataMaze += "@";
+            if(u == z-1) dataMaze += "\n"; 
+          }
+          else{
+            if( 0 < u && u < z-1)  dataMaze += " ";
+            else dataMaze += "@"
+            if(u == z-1) dataMaze += "\n";
+          }
+        }
+       if(x % 2 == 1){rev++;}
+    }
+      container.innerHTML = dataMaze;
+    }
+    maze(7);
+  </script>
+</body>
+</html>
